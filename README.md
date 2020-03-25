@@ -1,1 +1,2 @@
-# redis-lesson using laravel framework
+# Laravel training
+
