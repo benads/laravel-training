@@ -1,6 +1,7 @@
 <?php
 
 use App\Events\UserSignedUp;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Redis;
 
 /*
@@ -14,31 +15,6 @@ use Illuminate\Support\Facades\Redis;
 |
 */
 
-Route::get('/', function () {
-
-    $data = [
-            'event' => 'UserSignedUp',
-            'data' => [
-                'username' => 'JohnDoe',
-            ],
-    ];
-
-   
-    $redis = Redis::connection();
-
-    $redis->publish('test-channel', json_encode($data));
-
-    // 2. Node.js + Redis subscribe to the event
-    // socket.js    
-    
-    // 3. Use socket.io to emit to all clients
-    // welcome.blade.php
-
-    event(new UserSignedUp('JohnDoe'));
-    
-    return view('welcome');
-});
-
-// Route::get('/', 'HomeController@index')->name('homeIndex');
+Route::get('/', 'HomeController@index')->name('homeIndex');
 
 

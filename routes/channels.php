@@ -11,6 +11,6 @@
 |
 */
 
-Broadcast::channel('test-channel', function () {
-    return true;
-});
+// Broadcast::channel('test-channel', function () {
+//     return true;
+// });
