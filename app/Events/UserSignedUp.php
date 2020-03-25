@@ -2,8 +2,8 @@
 
 namespace App\Events;
 
-use App\Events\Event;
 use Illuminate\Broadcasting\Channel;
+use Illuminate\Support\Facades\Event;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Broadcasting\PrivateChannel;
 use Illuminate\Broadcasting\PresenceChannel;
@@ -11,12 +11,13 @@ use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 
-class UserSignedUp extends Event implements ShouldBroadcast
+class UserSignedUp implements ShouldBroadcast
 {
-
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
     public $username;
+
+    public $age = 30;
 
     /**
      * Create a new event instance.
@@ -35,6 +36,6 @@ class UserSignedUp extends Event implements ShouldBroadcast
      */
     public function broadcastOn()
     {
-        return ['test-channel'];
+        return new Channel('test-channel');
     }
 }

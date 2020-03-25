@@ -16,21 +16,17 @@ use Illuminate\Support\Facades\Redis;
 
 Route::get('/', function () {
 
-    Redis::set('name', 'Benjamin');
-
-    $name = Redis::get('name');
-    
-    // 1. Publish event with Redis
     $data = [
             'event' => 'UserSignedUp',
             'data' => [
                 'username' => 'JohnDoe',
             ],
-        ];
+    ];
 
    
+    $redis = Redis::connection();
 
-    Redis::set('test-channel', json_encode($data));
+    $redis->publish('test-channel', json_encode($data));
 
     // 2. Node.js + Redis subscribe to the event
     // socket.js    
@@ -40,6 +36,9 @@ Route::get('/', function () {
 
     event(new UserSignedUp('JohnDoe'));
     
-    return view('welcome', compact('name'));
+    return view('welcome');
 });
+
+// Route::get('/', 'HomeController@index')->name('homeIndex');
+
 
