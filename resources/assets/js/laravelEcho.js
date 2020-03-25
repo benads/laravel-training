@@ -8,6 +8,7 @@ let e = new Echo({
 
 e.channel('test-channel')
     .listen('UserSignedUp', (e) => {
+        console.log(e)
         let item = document.createElement("p");
         item.innerHTML = e.username;
         document.querySelector('body').appendChild(item);

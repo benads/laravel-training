@@ -37402,6 +37402,7 @@ var e = new __WEBPACK_IMPORTED_MODULE_0_laravel_echo__["a" /* default */]({
 });
 
 e.channel('test-channel').listen('UserSignedUp', function (e) {
+    console.log(e);
     var item = document.createElement("p");
     item.innerHTML = e.username;
     document.querySelector('body').appendChild(item);

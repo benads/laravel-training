@@ -1,8 +1,10 @@
 <?php
 
 use App\Events\UserSignedUp;
-use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Redis;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\GroupController;
+use App\Http\Controllers\Auth\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,6 +17,11 @@ use Illuminate\Support\Facades\Redis;
 |
 */
 
-Route::get('/', 'HomeController@index')->name('homeIndex');
 
+Route::get('/', 'HomeController@index')->name('home');
 
+Route::get('authById/{user_id}', 'HomeController@authById')->name('authById');
+
+Auth::routes();
+
+Route::get('/groups', 'GroupController@index')->name('groups');
