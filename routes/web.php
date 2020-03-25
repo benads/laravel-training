@@ -1,6 +1,6 @@
 <?php
 
-use Predis\Client;
+use Illuminate\Support\Facades\Redis;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +14,10 @@ use Predis\Client;
 */
 
 Route::get('/', function () {
+
+    Redis::set('name', 'Benjamin');
+
+    $name = Redis::get('name');
     
     // 1. Publish event with Redis
     $data = [
@@ -23,16 +27,19 @@ Route::get('/', function () {
             ],
         ];
 
-    $redis = new Client();
+   
 
-    $redis->publish('test-channel', json_encode($data));
+    Redis::set('test-channel', json_encode($data));
 
     // 2. Node.js + Redis subscribe to the event
     // socket.js
 
-    return view('welcome');
+    return view('welcome', compact('name'));
     
     
     
     // 3. Use socket.io to emit to all clients
+    
+
 });
+
