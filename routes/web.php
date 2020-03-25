@@ -1,5 +1,6 @@
 <?php
 
+use App\Events\UserSignedUp;
 use Illuminate\Support\Facades\Redis;
 
 /*
@@ -32,14 +33,13 @@ Route::get('/', function () {
     Redis::set('test-channel', json_encode($data));
 
     // 2. Node.js + Redis subscribe to the event
-    // socket.js
-
-    return view('welcome', compact('name'));
-    
-    
+    // socket.js    
     
     // 3. Use socket.io to emit to all clients
-    
+    // welcome.blade.php
 
+    event(new UserSignedUp('JohnDoe'));
+    
+    return view('welcome', compact('name'));
 });
 
