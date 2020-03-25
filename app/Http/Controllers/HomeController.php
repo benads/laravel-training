@@ -6,7 +6,7 @@ use App\Events\UserSignedUp;
 
 class HomeController
 {
-    public function index () 
+    public function index()
     {
         event(new UserSignedUp('John Doe'));
         return view('welcome');

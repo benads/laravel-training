@@ -37396,9 +37396,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 window.io = __webpack_require__(58);
 
-window.Echo = new __WEBPACK_IMPORTED_MODULE_0_laravel_echo__["a" /* default */]({
+var e = new __WEBPACK_IMPORTED_MODULE_0_laravel_echo__["a" /* default */]({
     broadcaster: 'socket.io',
     host: window.location.hostname + ':6001' // this is laravel-echo-server host
+});
+
+e.channel('test-channel').listen('UserSignedUp', function (e) {
+    var item = document.createElement("p");
+    item.innerHTML = e.username;
+    document.querySelector('body').appendChild(item);
+});
+
+document.querySelector('#notify').addEventListener('click', function (e) {
+    e.preventDefault();
+    fetch('/');
 });
 
 /***/ }),
