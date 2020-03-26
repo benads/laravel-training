@@ -13,7 +13,17 @@ e.channel('test-channel').listen('UserSignedUp', e => {
 	document.querySelector('body').appendChild(item);
 });
 
-document.querySelector('#notify').addEventListener('click', function(e) {
-	e.preventDefault();
-	fetch('/');
-});
+if (window.location.pathname === '/') {
+	// Exemple pour declencher l'event
+	document.querySelector('#notify').addEventListener('click', function(e) {
+		e.preventDefault();
+		fetch('/');
+	});
+}
+
+if (window.location.pathname === '/groups') {
+	// S'abonner a une chaine privée
+	e.private('group.1').listen('GroupWizzEvent', e => {
+		console.log('GroupWizzEvent', e);
+	});
+}

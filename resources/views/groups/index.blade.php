@@ -13,13 +13,17 @@
                 <div class="panel-body">
                     <ul class="list-group">
                         @foreach ($group->users as $user)
-                            <li class="list-group-item">
-                                <a href="{{ route('authById', $user->id) }}">
-                                    {{ $user->email }}
-                                </a>
-                            </li>
+                        <li class="list-group-item">
+                            <a href="{{ route('authById', $user->id) }}">
+                                {{ $user->email }}
+                            </a>
+                        </li>
                         @endforeach
                     </ul>
+                    <form action="{{ route('notify', $group->id) }}" method="post">
+                        {{ csrf_field() }}
+                        <button class="btn btn-primary">Notifier</button>
+                    </form>
                 </div>
             </div>
         </div>

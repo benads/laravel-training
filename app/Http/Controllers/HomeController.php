@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Events\UserSignedUp;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -17,10 +16,5 @@ class HomeController extends Controller
     {
         event(new UserSignedUp('John Doe'));
         return view('home');
-    }
-
-    public function authById($user_id) {
-        Auth::loginUsingId($user_id);
-        return redirect()->route('home');
     }
 }

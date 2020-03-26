@@ -1,7 +1,5 @@
 <?php
 
-use App\Events\UserSignedUp;
-use Illuminate\Support\Facades\Redis;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\GroupController;
 use App\Http\Controllers\Auth\LoginController;
@@ -20,7 +18,9 @@ use App\Http\Controllers\Auth\LoginController;
 
 Route::get('/', 'HomeController@index')->name('home');
 
-Route::get('authById/{user_id}', 'HomeController@authById')->name('authById');
+Route::get('authById/{user_id}', 'GroupController@authById')->name('authById');
+
+Route::post('groups/{id}/notify', 'GroupController@notify')->name('notify');
 
 Auth::routes();
 

@@ -1,5 +1,5 @@
 {
-	"authHost": "http://192.168.10.10",
+	"authHost": "http://redis-lesson.local",
 	"authEndpoint": "/broadcasting/auth",
 	"clients": [
 		{
