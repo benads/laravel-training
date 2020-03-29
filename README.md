@@ -2,7 +2,7 @@
 
 This app is running with Homestead & Docker (not mandatory) under Nginx
 
-With Docker 🐳 :
+### With Docker 🐳 :
 
 You need to install docker on your machine first
 
@@ -20,7 +20,7 @@ Run specfic command into container ;
 
 ---
 
-Without Docker
+### Without Docker
 
 Install dependancies for PHP
 <br>
