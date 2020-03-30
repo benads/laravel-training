@@ -34,6 +34,10 @@ Then you will need to compile that, so
 <br>
 `npm run dev`
 
+Init your NodeJS server 
+<br>
+`laravel-echo-server init`
+
 Node js websocket server
 <br>
 `laravel-echo-server start`
