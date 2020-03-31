@@ -19,6 +19,23 @@ services:
     networks:
       - app-network
 
+  laravel-echo-server:
+    build:
+      context: ./laravel-echo
+    ports:
+      - "6001:6001"
+    links:
+      - redis
+    volumes:
+      - ./laravel-echo/laravel-echo-server.json:/app/laravel-echo-server.json:ro
+
+  redis:
+    build: ./redis
+    volumes:
+      - ./redis:/data
+    ports:
+      - "6380:6379"
+
   #Nginx Service
   webserver:
     image: nginx:alpine

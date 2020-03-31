@@ -1,29 +1,29 @@
-import Echo from 'laravel-echo';
-window.io = require('socket.io-client');
+import Echo from "laravel-echo";
+window.io = require("socket.io-client");
 
 let e = new Echo({
-	broadcaster: 'socket.io',
-	host: window.location.hostname + ':6001', // this is laravel-echo-server host
+	broadcaster: "socket.io",
+	host: window.location.hostname + ":6001", // this is laravel-echo-server host
 });
 
-e.channel('test-channel').listen('UserSignedUp', e => {
+console.log(window.location.hostname);
+
+e.channel("test-channel").listen("UserSignedUp", e => {
 	console.log(e);
-	let item = document.createElement('p');
+	let item = document.createElement("p");
 	item.innerHTML = e.username;
-	document.querySelector('body').appendChild(item);
+	document.querySelector("body").appendChild(item);
 });
 
-if (window.location.pathname === '/') {
-	// Exemple pour declencher l'event
-	document.querySelector('#notify').addEventListener('click', function(e) {
-		e.preventDefault();
-		fetch('/');
-	});
-}
+// Exemple pour declencher l'event
+document.querySelector("#notify").addEventListener("click", function(e) {
+	e.preventDefault();
+	fetch("/");
+});
 
-if (window.location.pathname === '/groups') {
+if (window.location.pathname === "/groups") {
 	// S'abonner a une chaine privée
-	e.private('group.1').listen('GroupWizzEvent', e => {
-		console.log('GroupWizzEvent', e);
+	e.private("group.1").listen("GroupWizzEvent", e => {
+		console.log("GroupWizzEvent", e);
 	});
 }

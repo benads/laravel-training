@@ -37397,29 +37397,29 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 window.io = __webpack_require__(58);
 
 var e = new __WEBPACK_IMPORTED_MODULE_0_laravel_echo__["a" /* default */]({
-	broadcaster: 'socket.io',
-	host: window.location.hostname + ':6001' // this is laravel-echo-server host
+	broadcaster: "socket.io",
+	host: window.location.hostname + ":6001" // this is laravel-echo-server host
 });
 
-e.channel('test-channel').listen('UserSignedUp', function (e) {
+console.log(window.location.hostname);
+
+e.channel("test-channel").listen("UserSignedUp", function (e) {
 	console.log(e);
-	var item = document.createElement('p');
+	var item = document.createElement("p");
 	item.innerHTML = e.username;
-	document.querySelector('body').appendChild(item);
+	document.querySelector("body").appendChild(item);
 });
 
-if (window.location.pathname === '/') {
-	// Exemple pour declencher l'event
-	document.querySelector('#notify').addEventListener('click', function (e) {
-		e.preventDefault();
-		fetch('/');
-	});
-}
+// Exemple pour declencher l'event
+document.querySelector("#notify").addEventListener("click", function (e) {
+	e.preventDefault();
+	fetch("/");
+});
 
-if (window.location.pathname === '/groups') {
+if (window.location.pathname === "/groups") {
 	// S'abonner a une chaine privée
-	e.private('group.1').listen('GroupWizzEvent', function (e) {
-		console.log('GroupWizzEvent', e);
+	e.private("group.1").listen("GroupWizzEvent", function (e) {
+		console.log("GroupWizzEvent", e);
 	});
 }
 
