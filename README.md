@@ -4,6 +4,8 @@ This app is running with Homestead & Docker (not mandatory) under Nginx
 
 ### With Docker 🐳 :
 
+WIP : redis & laravel-echo doesn't working togeher
+
 You need to install docker on your machine first
 
 Build and run your containers in background with `-d` :
@@ -34,7 +36,7 @@ Then you will need to compile that, so
 <br>
 `npm run dev`
 
-Init your NodeJS server 
+Init your NodeJS server
 <br>
 `laravel-echo-server init`
 
