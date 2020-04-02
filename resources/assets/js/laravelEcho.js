@@ -7,19 +7,19 @@ let e = new Echo({
 });
 
 console.log(window.location.hostname);
-
-e.channel("test-channel").listen("UserSignedUp", e => {
-	console.log(e);
-	let item = document.createElement("p");
-	item.innerHTML = e.username;
-	document.querySelector("body").appendChild(item);
-});
-
-// Exemple pour declencher l'event
-document.querySelector("#notify").addEventListener("click", function(e) {
-	e.preventDefault();
-	fetch("/");
-});
+if (window.location.pathname === "/") {
+	e.channel("test-channel").listen("UserSignedUp", e => {
+		console.log(e);
+		let item = document.createElement("p");
+		item.innerHTML = e.username;
+		document.querySelector("body").appendChild(item);
+	});
+	// Exemple pour declencher l'event
+	document.querySelector("#notify").addEventListener("click", function(e) {
+		e.preventDefault();
+		fetch("/");
+	});
+}
 
 if (window.location.pathname === "/groups") {
 	// S'abonner a une chaine privée
