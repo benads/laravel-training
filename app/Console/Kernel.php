@@ -24,7 +24,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('inspire')->everyFiveMinutes()->appendOutputTo('./storage/app/schedule-commands/inspire.txt')->emailOutputTo('hello@test.com');
+        $schedule->command('inspire')->fridays()->appendOutputTo('./storage/app/schedule-commands/inspire.txt')->emailOutputTo('hello@test.com');
     }
 
     /**
