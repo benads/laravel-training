@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Events\UserSignedUp;
+use App\Events\UserWasBanned;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -15,6 +17,8 @@ class HomeController extends Controller
     public function index()
     {
         event(new UserSignedUp('John Doe'));
+        $user = User::latest()->first();
+        event(new UserWasBanned($user));
         return view('home');
     }
 }
