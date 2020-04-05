@@ -1,5 +1,9 @@
 ## Laravel trainings
 
+Add the following Cron entry to your server :
+<br>
+`* * * * * php /path-to-your-project/artisan schedule:run >> /dev/null 2>&1`
+
 This app is running with Homestead & Docker (not mandatory) under Nginx
 
 ### With Docker 🐳 :
