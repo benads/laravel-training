@@ -3,12 +3,12 @@ window.io = require("socket.io-client");
 
 let e = new Echo({
 	broadcaster: "socket.io",
-	host: window.location.hostname + ":6001", // this is laravel-echo-server host
+	host: window.location.hostname + ":6002", // this is laravel-echo-server host
 });
 
 console.log(window.location.hostname);
 if (window.location.pathname === "/") {
-	e.channel("test-channel").listen("UserSignedUp", e => {
+	e.channel("test-channel").listen("UserSignedUp", (e) => {
 		console.log(e);
 		let item = document.createElement("p");
 		item.innerHTML = e.username;
@@ -23,7 +23,7 @@ if (window.location.pathname === "/") {
 
 if (window.location.pathname === "/groups") {
 	// S'abonner a une chaine privée
-	e.private("group.1").listen("GroupWizzEvent", e => {
+	e.private("group.1").listen("GroupWizzEvent", (e) => {
 		console.log("GroupWizzEvent", e);
 	});
 }

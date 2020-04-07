@@ -6,6 +6,8 @@ use App\Events\UserSignedUp;
 use App\Events\UserWasBanned;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
 
 class HomeController extends Controller
 {
@@ -17,8 +19,8 @@ class HomeController extends Controller
     public function index()
     {
         event(new UserSignedUp('John Doe'));
-        $user = User::latest()->first();
-        event(new UserWasBanned($user));
+        // $user = User::latest()->first();
+        // event(new UserWasBanned($user));
         return view('home');
     }
 }

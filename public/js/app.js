@@ -37398,7 +37398,7 @@ window.io = __webpack_require__(58);
 
 var e = new __WEBPACK_IMPORTED_MODULE_0_laravel_echo__["a" /* default */]({
 	broadcaster: "socket.io",
-	host: window.location.hostname + ":6001" // this is laravel-echo-server host
+	host: window.location.hostname + ":6002" // this is laravel-echo-server host
 });
 
 console.log(window.location.hostname);
