@@ -37398,10 +37398,25 @@ window.io = __webpack_require__(58);
 
 var e = new __WEBPACK_IMPORTED_MODULE_0_laravel_echo__["a" /* default */]({
 	broadcaster: "socket.io",
-	host: window.location.hostname + ":6002" // this is laravel-echo-server host
+	host: window.location.hostname + ":6002"
 });
 
 console.log(window.location.hostname);
+
+console.log("done");
+
+e.channel("test-channel").listen("UserSignedUp", function (e) {
+	console.log(e);
+	var item = document.createElement("p");
+	item.innerHTML = e.username;
+	document.querySelector("body").appendChild(item);
+});
+// Exemple pour declencher l'event
+document.querySelector("#notify").addEventListener("click", function (e) {
+	e.preventDefault();
+	fetch("/");
+});
+
 if (window.location.pathname === "/") {
 	e.channel("test-channel").listen("UserSignedUp", function (e) {
 		console.log(e);
