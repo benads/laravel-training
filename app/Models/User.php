@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Models\Profile;
+use App\Models\Post;
 
 class User extends Authenticatable
 {
@@ -28,8 +29,15 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    // Relations
+
     public function profile()
     {
         return $this->hasOne(Profile::class);
+    }
+
+    public function posts()
+    {
+        return $this->hasMany(Post::class);
     }
 }
