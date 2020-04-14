@@ -13,6 +13,9 @@
             <p class="card-title">{{ $post->content }}</p>
             <h5 class="card-text"> Author: {{ $post->user->name }}</h5>
             <a href={{route('post.show', ['id'=>$post->id]) }} class="btn btn-primary">Go to the post</a>
+            @if ($post->tags)
+            {{$post->tags}}
+            @endif
         </div>
     </div>
     @endforeach
