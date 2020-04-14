@@ -9,7 +9,8 @@ class UserController extends Controller
     /**
      * Show the user information.
      *
-     * @return \Illuminate\Http\Response
+     * @param int $id
+     * @return void
      */
     public function show($id)
     {

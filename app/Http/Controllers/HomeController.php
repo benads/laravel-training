@@ -8,13 +8,12 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-
 class HomeController extends Controller
 {
     /**
      * Show the application dashboard.
      *
-     * @return \Illuminate\Http\Response
+     * @return void
      */
     public function index()
     {
