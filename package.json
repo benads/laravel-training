@@ -17,7 +17,8 @@
     "laravel-mix": "^1.0",
     "lodash": "^4.17.4",
     "nodemon": "^2.0.2",
-    "vue": "^2.1.10"
+    "vue": "^2.1.10",
+    "vue-template-compiler": "^2.6.11"
   },
   "dependencies": {
     "ioredis": "^4.16.0",
