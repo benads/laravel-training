@@ -20,6 +20,8 @@ Route::get('/', 'HomeController@index')->name('home');
 
 Route::get('/user/{id}', 'UserController@show')->name('user.show');
 
+Route::get('/post/{id}', 'PostController@show')->name('post.show');
+
 Route::get('authById/{user_id}', 'GroupController@authById')->name('authById');
 
 Route::post('groups/{id}/notify', 'GroupController@notify')->name('notify');

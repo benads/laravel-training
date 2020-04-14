@@ -12,7 +12,7 @@
         <div class="card-body">
             <p class="card-title">{{ $post->content }}</p>
             <h5 class="card-text"> Author: {{ $post->user->name }}</h5>
-            <a href="#" class="btn btn-primary">Go to the post</a>
+            <a href={{route('post.show', ['id'=>$post->id]) }} class="btn btn-primary">Go to the post</a>
         </div>
     </div>
     @endforeach
