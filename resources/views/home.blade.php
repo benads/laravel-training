@@ -11,11 +11,15 @@
         </div>
         <div class="card-body">
             <p class="card-title">{{ $post->content }}</p>
+            @if ($post->user)
             <h5 class="card-text"> Author: {{ $post->user->name }}</h5>
-            <a href={{route('post.show', ['id'=>$post->id]) }} class="btn btn-primary">Go to the post</a>
-            @if ($post->tags)
-            {{$post->tags}}
             @endif
+            @foreach ($post->tags as $tag)
+            @if ($tag)
+            <h6><span class="badge badge-secondary">Tag</span>{{$tag->name}} </h6>
+            @endif
+            @endforeach
+            <a href={{route('post.show', ['id'=>$post->id]) }} class="btn btn-primary">Go to the post</a>
         </div>
     </div>
     @endforeach

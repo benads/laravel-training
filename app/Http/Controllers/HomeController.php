@@ -19,6 +19,9 @@ class HomeController extends Controller
     public function index()
     {
         $posts = Post::paginate(15);
+        // foreach ($posts as $post) {
+        //     ($post->user);
+        // }
         event(new UserSignedUp('John Doe'));
         // $user = User::latest()->first();
         // event(new UserWasBanned($user));
