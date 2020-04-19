@@ -19,6 +19,11 @@
             <h6><span class="badge badge-secondary">Tag</span>{{$tag->name}} </h6>
             @endif
             @endforeach
+            @if ($post->comments)
+            @foreach ($post->comments as $comment)
+            <p> {{ $comment->comment }}</p>
+            @endforeach
+            @endif
             <a href={{route('post.show', ['id'=>$post->id]) }} class="btn btn-primary">Go to the post</a>
         </div>
     </div>
