@@ -13,7 +13,7 @@
         <button id="notify">Notify</button>
     </div>
 
-    @foreach ($user->posts as $post)
+    @foreach ($user->posts->sortByDesc('created_at') as $post)
     <div class="card" style="border: 0.1px solid black; margin: 20px;padding:20px">
         <div class="card-header">
             {{ $post->title }}
