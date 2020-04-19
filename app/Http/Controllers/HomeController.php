@@ -18,13 +18,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $posts = Post::paginate(15);
-        // foreach ($posts as $post) {
-        //     ($post->user);
-        // }
+        $posts = Post::orderBy('created_at', 'desc')->paginate(15);
         event(new UserSignedUp('John Doe'));
-        // $user = User::latest()->first();
-        // event(new UserWasBanned($user));
         return view('home', compact('posts'));
     }
 }
