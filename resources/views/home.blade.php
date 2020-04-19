@@ -20,12 +20,17 @@
             <h6><span class="badge badge-secondary">Tag</span>{{$tag->name}} </h6>
             @endif
             @endforeach
-            @if ($post->comments)
-            @foreach ($post->comments as $comment)
-            <p> {{ $comment->comment }}</p>
-            @endforeach
-            @endif
             <a href={{route('post.show', ['id'=>$post->id]) }} class="btn btn-primary">Go to the post</a>
+            @if ($post->comments && $post->comments->count() > 0)
+            <div class="container">
+                <h3>Commentaires</h3>
+                @foreach ($post->comments as $comment)
+                <p class="card_text"> {{ $comment->comment }}</p>
+                @endforeach
+            </div>
+            @else
+
+            @endif
             @include('comment.create', ['id' => $post->id])
         </div>
     </div>
