@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class Post extends Model
 {
@@ -21,5 +22,25 @@ class Post extends Model
     public function comments()
     {
         return $this->hasMany(Comment::class);
+    }
+
+    public function likes()
+    {
+        return $this->hasMany(Like::class);
+    }
+
+    public function userLiked($postId)
+    {
+        $p = Like::where([['user_id', Auth::user()->id], [ 'post_id', $postId]])->first();
+        
+        return $p ? true : false;
+    }
+
+    public function countLike($postId)
+    {
+        return Like::where([
+            ['post_id', $postId],
+            ['like', true]
+        ])->count();
     }
 }

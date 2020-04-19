@@ -14,12 +14,17 @@
             <p class="card-title">{{ $post->content }}</p>
             @if ($post->user)
             <h5 class="card-text"> Author: {{ $post->user->name }}</h5>
-            @endif
+
             @foreach ($post->tags as $tag)
             @if ($tag)
             <h6><span class="badge badge-secondary">Tag</span>{{$tag->name}} </h6>
             @endif
             @endforeach
+            <div>
+                {{$post->countLike($post->id)}} Like
+            </div>
+            {{($post->userLiked($post->id) ? 'okk' : 'not ok')}}
+            @include('like.create', ['id' => $post->id])
             <a href={{route('post.show', ['id'=>$post->id]) }} class="btn btn-primary">Go to the post</a>
             @if ($post->comments && $post->comments->count() > 0)
             <div class="container">
@@ -30,6 +35,7 @@
             </div>
             @else
 
+            @endif
             @endif
             @include('comment.create', ['id' => $post->id])
         </div>
