@@ -26,6 +26,7 @@
             @endforeach
             @endif
             <a href={{route('post.show', ['id'=>$post->id]) }} class="btn btn-primary">Go to the post</a>
+            @include('comment.create', ['id' => $post->id])
         </div>
     </div>
     @endforeach
