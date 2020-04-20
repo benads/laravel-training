@@ -15,19 +15,31 @@ class LikeController extends Controller
      */
     public function create()
     {
-        return view('like.create');
+        return view('like.like');
     }
 
-    public function store(Request $request)
+    public function like(Request $request)
     {
-        $p = Like::where([['user_id', Auth::user()->id], [ 'post_id', $request->post_id]])->first();
-    
-        if (!is_null($p)) {
-            Like::where('user_id', $p->user_id)->delete();
-        }
+        // $p = Like::where([['user_id', Auth::user()->id], [ 'post_id', $request->post_id]])->first();
+        // dd($p);
+        // if (!is_null($p)) {
+        //     Like::where('user_id', $p->user_id)->delete();
+        // }
 
         Like::create($request->only(['like', 'post_id', 'user_id']));
-        
+    
+        return back();
+    }
+
+    public function edit()
+    {
+        return view('like.unlike');
+    }
+
+    public function unlike(Request $request)
+    {
+        Like::where([['user_id', Auth::user()->id], ['post_id', $request->post_id]])->delete();
+
         return back();
     }
 }

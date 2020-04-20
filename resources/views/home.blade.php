@@ -23,8 +23,16 @@
             <div>
                 {{$post->countLike($post->id)}} Like
             </div>
-            {{-- {{dump($post->userLiked($post->id) ? 'ok' : 'not ok')}} --}}
-            @include('like.create', ['id' => $post->id, 'like' => $post->userLiked($post->id) ? false : true])
+
+            @if ($post->userLiked($post->id))
+            @include('like.unlike', ['id' => $post->id])
+            @else
+            @include('like.like', ['id' => $post->id])
+
+            @endif
+
+            {{-- {{dump($post->userLiked($post->id) ? 'ok' : 'not ok')}}
+            @include('like.create', ['id' => $post->id, 'like' => $post->userLiked($post->id) ? false : true]) --}}
             <a href={{route('post.show', ['id'=>$post->id]) }} class="btn btn-primary">Go to the post</a>
             @if ($post->comments && $post->comments->count() > 0)
             <div class="container">

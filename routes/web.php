@@ -26,7 +26,9 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::post('/post/create', 'PostController@store')->name('post.store');
 
-    Route::post('/post/{id}/like/create', 'LikeController@store')->name('like.store');
+    Route::post('/post/{id}/like', 'LikeController@like')->name('like');
+
+    Route::delete('/post/{id}/unlike', 'LikeController@unlike')->name('unlike');
 
     Route::get('authById/{user_id}', 'GroupController@authById')->name('authById');
 
