@@ -4,6 +4,14 @@
 <div class="container">
     <h1>HOME</h1>
     <h2>Tout les posts</h2>
+    @foreach ($errors->all() as $error)
+    <div class="alert alert-danger" role="alert">
+        <strong>{{ $error }}</strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    @endforeach
     @include('post.create')
     @foreach ($posts as $post)
     <div class="card" style="border: 0.1px solid black; margin: 20px;padding:20px">
