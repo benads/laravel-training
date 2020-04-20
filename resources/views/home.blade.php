@@ -15,8 +15,18 @@
     @include('post.create')
     @foreach ($posts as $post)
     <div class="card" style="border: 0.1px solid black; margin: 20px;padding:20px">
-        <div class="card-header">
-            {{ $post->title }}
+        <div class="card-header" style="display:flex;justify-content:space-between;align-items:center">
+            <h3><a href={{route('post.show', ['id'=>$post->id]) }}>{{ $post->title }}</a></h3>
+            <div style="display:flex;justify-content:space-between;align-items:center">
+                @if ($post->userLiked($post->id))
+                @include('like.unlike', ['id' => $post->id])
+                @else
+                @include('like.like', ['id' => $post->id])
+                @endif
+                <div>
+                    {{$post->countLike($post->id)}} Like
+                </div>
+            </div>
         </div>
         <div class="card-body">
             <p class="card-title">{{ $post->content }}</p>
@@ -28,24 +38,14 @@
             <h6><span class="badge badge-secondary">Tag</span>{{$tag->name}} </h6>
             @endif
             @endforeach
-            <div>
-                {{$post->countLike($post->id)}} Like
-            </div>
-
-            @if ($post->userLiked($post->id))
-            @include('like.unlike', ['id' => $post->id])
-            @else
-            @include('like.like', ['id' => $post->id])
-            @endif
 
             {{-- {{dump($post->userLiked($post->id) ? 'ok' : 'not ok')}}
             @include('like.create', ['id' => $post->id, 'like' => $post->userLiked($post->id) ? false : true]) --}}
-            <a href={{route('post.show', ['id'=>$post->id]) }} class="btn btn-primary">Go to the post</a>
             @if ($post->comments && $post->comments->count() > 0)
             <div class="container" style="width:80%;">
                 <h3>Commentaires</h3>
                 @foreach ($post->comments as $comment)
-                <div style="border:1px solid black;margin:10px;">
+                <div style="border:0.1px solid black;margin:10px;">
                     <p class="card_text"> {{ $comment->comment }}</p>
                 </div>
                 @endforeach
