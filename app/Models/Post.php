@@ -31,9 +31,15 @@ class Post extends Model
 
     public function userLiked($postId)
     {
-        $p = Like::where([['user_id', Auth::user()->id], [ 'post_id', $postId]])->first();
-        
-        return $p ? true : false;
+        $p = Like::where([['user_id', Auth::user()->id], [ 'post_id', $postId]])->get();
+
+        $l = null;
+
+        foreach ($p as $o) {
+            return $l = $o->like;
+        }
+
+        return !is_null($l) ? true : false;
     }
 
     public function countLike($postId)

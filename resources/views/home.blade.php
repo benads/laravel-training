@@ -23,8 +23,8 @@
             <div>
                 {{$post->countLike($post->id)}} Like
             </div>
-            {{($post->userLiked($post->id) ? 'okk' : 'not ok')}}
-            @include('like.create', ['id' => $post->id])
+            {{-- {{dump($post->userLiked($post->id) ? 'ok' : 'not ok')}} --}}
+            @include('like.create', ['id' => $post->id, 'like' => $post->userLiked($post->id) ? false : true])
             <a href={{route('post.show', ['id'=>$post->id]) }} class="btn btn-primary">Go to the post</a>
             @if ($post->comments && $post->comments->count() > 0)
             <div class="container">
