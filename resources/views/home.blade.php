@@ -28,24 +28,25 @@
             @include('like.unlike', ['id' => $post->id])
             @else
             @include('like.like', ['id' => $post->id])
-
             @endif
 
             {{-- {{dump($post->userLiked($post->id) ? 'ok' : 'not ok')}}
             @include('like.create', ['id' => $post->id, 'like' => $post->userLiked($post->id) ? false : true]) --}}
             <a href={{route('post.show', ['id'=>$post->id]) }} class="btn btn-primary">Go to the post</a>
             @if ($post->comments && $post->comments->count() > 0)
-            <div class="container">
+            <div class="container" style="width:80%;">
                 <h3>Commentaires</h3>
                 @foreach ($post->comments as $comment)
-                <p class="card_text"> {{ $comment->comment }}</p>
+                <div style="border:1px solid black;margin:10px;">
+                    <p class="card_text"> {{ $comment->comment }}</p>
+                </div>
                 @endforeach
+                @include('comment.create', ['id' => $post->id])
             </div>
             @else
 
             @endif
             @endif
-            @include('comment.create', ['id' => $post->id])
         </div>
     </div>
     @endforeach
