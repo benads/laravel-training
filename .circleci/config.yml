@@ -53,4 +53,4 @@ jobs:
       # - run: php artisan migrate --env=testing --database=sqlite_testing --force
 
       # run tests with phpunit or codecept
-      - run: phpunit
+      # - run: phpunit
