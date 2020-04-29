@@ -37803,9 +37803,13 @@ var e = new __WEBPACK_IMPORTED_MODULE_0_laravel_echo__["a" /* default */]({
 	host: window.location.hostname + ":6001" // docker : window.location.hostname + ":6002"
 });
 
-console.log("shot");
+console.log(window.Laravel.user);
 
-console.log(window.location.hostname);
+e.private("the." + window.Laravel.user).listen("PrivateEvent", function (e) {
+	console.log("PrivateEvent");
+	console.log(e);
+});
+
 if (window.location.pathname === "/") {
 	e.channel("test-channel").listen("UserSignedUp", function (e) {
 		console.log(e);
@@ -37813,23 +37817,13 @@ if (window.location.pathname === "/") {
 		item.innerHTML = e.username;
 		document.querySelector("body").appendChild(item);
 	});
-	// Exemple pour declencher l'event
-	document.querySelector("#notify").addEventListener("click", function (e) {
-		e.preventDefault();
-		fetch("/");
-	});
 }
-console.log("now its working");
+
 e.channel("test-channel").listen("UserSignedUp", function (e) {
 	console.log(e);
 	var item = document.createElement("p");
 	item.innerHTML = e.username;
 	document.querySelector("body").appendChild(item);
-});
-// Exemple pour declencher l'event
-document.querySelector("#notify").addEventListener("click", function (e) {
-	e.preventDefault();
-	fetch("/");
 });
 
 if (window.location.pathname === "/groups") {

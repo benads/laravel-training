@@ -11,6 +11,8 @@
 |
 */
 
-Broadcast::channel('group.{id}', function ($user, $id) {
-    return (int) $user->group_id === (int) $id;
+use Illuminate\Support\Facades\Broadcast;
+
+Broadcast::channel('the.{id}', function ($user, $id) {
+    return (int) $user->id === (int) $id;
 });

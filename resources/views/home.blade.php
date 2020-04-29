@@ -1,6 +1,15 @@
 @extends('layouts.app')
 
 @section('content')
+
+<head>
+    <script>
+        window.Laravel = {!! json_encode([
+            'user' => auth()->check() ? auth()->user()->id : null,
+        ]) !!};
+        
+    </script>
+</head>
 <div class="container">
     <h1>HOME</h1>
     <h2>Tout les posts</h2>

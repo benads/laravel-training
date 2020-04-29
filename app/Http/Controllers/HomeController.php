@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\PrivateEvent;
 use App\Events\UserSignedUp;
 use App\Events\UserWasBanned;
 use App\Models\Post;
@@ -20,6 +21,7 @@ class HomeController extends Controller
     {
         $posts = Post::orderBy('created_at', 'desc')->paginate(15);
         event(new UserSignedUp('John Doe'));
+        event(new PrivateEvent(auth()->user()));
         return view('home', compact('posts'));
     }
 }
