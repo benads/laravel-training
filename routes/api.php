@@ -19,8 +19,8 @@ Route::group([
     Route::post('logout', 'Api\Auth\AuthController@logout');
     Route::post('refresh', 'Api\Auth\AuthController@refresh');
     Route::post('me', 'Api\Auth\AuthController@me');
+    Route::post('post/create', 'Api\PostController@store');
 });
 
-Route::get('post', 'Api\PostApiController@index');
-
-Route::post('post/create', 'Api\PostApiController@store');
+Route::get('post', 'Api\PostController@index');
+Route::get('post/{id}', 'Api\PostController@show');
