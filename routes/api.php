@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 |--------------------------------------------------------------------------
 */
 
-Route::group(['middleware' => 'api',], function ($router) {
+Route::group(['middleware' => 'api',], function () {
     Route::post('login', 'Api\Auth\AuthController@login');
     Route::post('logout', 'Api\Auth\AuthController@logout');
     Route::post('refresh', 'Api\Auth\AuthController@refresh');
@@ -18,8 +18,7 @@ Route::group(['middleware' => 'api',], function ($router) {
     Route::get('profile', 'Api\UserController@show');
     Route::post('post/{id}/like', 'Api\LikeController@like');
     Route::delete('post/{id}/unlike', 'Api\LikeController@unlike');
+    Route::get('post', 'Api\PostController@index');
+    Route::get('post/{id}', 'Api\PostController@show');
+    Route::post('post/{id}/comment', 'Api\CommentController@store');
 });
-
-Route::get('post', 'Api\PostController@index');
-Route::get('post/{id}', 'Api\PostController@show');
-Route::post('post/{id}/comment', 'Api\CommentController@store');

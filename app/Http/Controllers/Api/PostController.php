@@ -9,20 +9,40 @@ use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
+    /**
+     * This array is returned for the posts.
+     *
+     * @param Object $post
+     * @return array
+     */
+    public function postArray($post)
+    {
+        return [
+            "id" => $post->id,
+            "title" => $post->title,
+            "content" => $post->content,
+            "likes" => $post->countLike($post->id)
+        ];
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
-        $formattedPosts = [];
+        $posts = Post::paginate();
 
-        $posts = Post::all();
+        $formattedPosts = [
+                           "current_page" => $posts->currentPage(),
+                           "total_posts" => $posts->total(),
+                           "next_page_url" => $posts->nextPageUrl()
+                          ];
 
         foreach ($posts as $post) {
-            $formattedPosts[] = [
-                "id" => $post->id,
-                "title" => $post->title,
-                "likes" => $post->countLike($post->id)
-            ];
+            $formattedPosts[] = $this->postArray($post);
         }
-
 
         return response($formattedPosts, 200);
     }
@@ -42,8 +62,10 @@ class PostController extends Controller
                     'title' => $request->title ,
                     'user_id' => $user_id
                 ]);
+        
+        $formattedPost = $this->postArray($post);
   
-        return response($post, 201);
+        return response($formattedPost, 201);
     }
 
     /**
@@ -55,6 +77,9 @@ class PostController extends Controller
     public function show($id)
     {
         $post = Post::where('id', $id)->first();
-        return response($post, 200);
+
+        $formattedPosts = $this->postArray($post);
+
+        return response($formattedPosts, 200);
     }
 }
