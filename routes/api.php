@@ -16,6 +16,8 @@ Route::group(['middleware' => 'api',], function ($router) {
     Route::post('me', 'Api\Auth\AuthController@me');
     Route::post('post/create', 'Api\PostController@store');
     Route::get('profile', 'Api\UserController@show');
+    Route::post('post/{id}/like', 'Api\LikeController@like');
+    Route::delete('post/{id}/unlike', 'Api\LikeController@unlike');
 });
 
 Route::get('post', 'Api\PostController@index');

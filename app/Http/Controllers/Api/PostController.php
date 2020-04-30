@@ -11,7 +11,20 @@ class PostController extends Controller
 {
     public function index()
     {
-        return response(Post::all(), 200);
+        $formattedPosts = [];
+
+        $posts = Post::all();
+
+        foreach ($posts as $post) {
+            $formattedPosts[] = [
+                "id" => $post->id,
+                "title" => $post->title,
+                "likes" => $post->countLike($post->id)
+            ];
+        }
+
+
+        return response($formattedPosts, 200);
     }
 
     /**
