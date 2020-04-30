@@ -9,6 +9,6 @@ use Illuminate\Http\Request;
 |--------------------------------------------------------------------------
 */
 
-Route::get('post', function () {
-    return response(Post::all(), 200);
-});
+Route::get('post', 'Api\PostApiController@index');
+
+Route::post('post/create', 'Api\PostApiController@store');
