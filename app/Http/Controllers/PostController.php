@@ -39,7 +39,13 @@ class PostController extends Controller
      */
     public function store(StorePostRequest $request)
     {
-        Post::create($request->only(['content', 'title', 'user_id']));
+        $user_id = Auth::user()->id;
+
+        Post::create([
+            'content' => $request->content,
+            'title' => $request->title ,
+            'user_id' => $user_id
+        ]);
   
         return back();
     }
