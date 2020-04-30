@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -12,9 +13,9 @@ class UserController extends Controller
      * @param int $id
      * @return void
      */
-    public function show($id)
+    public function show()
     {
-        $user = User::where('id', $id)->first();
-        return view('user.show', compact('user'));
+        $user = Auth::user();
+        return response($user, 200);
     }
 }
