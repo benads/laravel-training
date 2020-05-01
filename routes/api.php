@@ -21,4 +21,5 @@ Route::group(['middleware' => 'api',], function () {
     Route::get('post', 'Api\PostController@index');
     Route::get('post/{id}', 'Api\PostController@show');
     Route::post('post/{id}/comment', 'Api\CommentController@store');
+    Route::get('friends', 'Api\FriendController@index');
 });
