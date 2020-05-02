@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateFriendsTable extends Migration
+class AddAcceptedAndRequestedToUserFriendsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,9 @@ class CreateFriendsTable extends Migration
      */
     public function up()
     {
-        Schema::create('friend_lists', function (Blueprint $table) {
-            $table->increments('id');
-            $table->unsignedInteger('user_id')->unique();
-            $table->timestamps();
+        Schema::table('user_friends', function (Blueprint $table) {
+            $table->boolean('requested');
+            $table->boolean('accepted');
         });
     }
 
@@ -27,6 +26,6 @@ class CreateFriendsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('friend_lists');
+        Schema::dropIfExists('user_friends');
     }
 }

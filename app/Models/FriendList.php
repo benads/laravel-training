@@ -13,9 +13,19 @@ class FriendList extends Model
      */
     protected $table = 'friend_lists';
     
+    public function allFriends()
+    {
+        return $this->belongsToMany(User::class, 'user_friends', 'friend_id')->withPivot('accepted', 'requested');
+    }
+
+    public function requestFriend()
+    {
+        return $this->allFriends()->where('requested', true);
+    }
+
     public function friends()
     {
-        return $this->belongsToMany(User::class, 'user_friends');
+        return $this->allFriends()->where('accepted', true);
     }
 
     public function user()
