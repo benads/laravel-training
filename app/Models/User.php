@@ -44,7 +44,7 @@ class User extends Authenticatable implements JWTSubject
 
     public function list()
     {
-        return $this->hasOne(Friend::class);
+        return $this->hasOne(FriendList::class);
     }
 
     // public function friends()
