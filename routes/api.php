@@ -24,5 +24,5 @@ Route::group(['middleware' => 'api',], function () {
     Route::get('friends', 'Api\FriendController@index');
     Route::post('friends/addFriend', 'Api\FriendController@addFriend');
     Route::get('friends/request', 'Api\FriendController@friendRequest');
-    Route::post('friends/request/{requestedUser}', 'Api\FriendController@requesdUser');
+    Route::post('friends/request/{requestedUser}', 'Api\FriendController@acceptUser');
 });

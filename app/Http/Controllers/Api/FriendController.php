@@ -40,7 +40,7 @@ class FriendController extends Controller
         return response(200);
     }
 
-    public function requestUser($requestedUser)
+    public function acceptUser($requestedUser)
     {
         $currentUser = Auth::user();
 
