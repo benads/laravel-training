@@ -28,6 +28,11 @@ class FriendList extends Model
         return $this->allFriends()->where('accepted', true);
     }
 
+    public function friendsCount()
+    {
+        return $this->friends()->count();
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class);
