@@ -25,10 +25,26 @@ class PostController extends Controller
         ];
     }
 
+
+
     /**
-     * Display a listing of the resource.
+     * @SWG\Get(
+     *      path="/api/posts",
+     *      operationId="getProjectsList",
+     *      tags={"Projects"},
+     *      summary="Get list of projects",
+     *      description="Returns list of projects",
+     *      @SWG\Response(
+     *          response=200,
+     *          description="successful operation"
+     *       ),
+     *       @SWG\Response(response=400, description="Bad request"),
+     *       security={
+     *           {"api_key_security_example": {}}
+     *       }
+     *     )
      *
-     * @return \Illuminate\Http\Response
+     * Returns list of projects
      */
     public function index()
     {
