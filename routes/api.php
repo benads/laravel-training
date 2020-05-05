@@ -9,8 +9,9 @@ use Illuminate\Http\Request;
 |--------------------------------------------------------------------------
 */
 
-Route::group(['middleware' => 'api',], function () {
-    Route::post('login', 'Api\Auth\AuthController@login');
+Route::post('login', 'Api\Auth\AuthController@login');
+
+Route::group(['middleware' => 'jwt.auth',], function () {
     Route::post('logout', 'Api\Auth\AuthController@logout');
     Route::post('refresh', 'Api\Auth\AuthController@refresh');
     Route::post('me', 'Api\Auth\AuthController@me');
