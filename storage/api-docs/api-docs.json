@@ -2,15 +2,7 @@
     "swagger": "2.0",
     "info": {
         "title": "Laravel-training docs",
-        "description": "Api description...",
-        "termsOfService": "",
-        "contact": {
-            "email": "contact@mysite.com"
-        },
-        "license": {
-            "name": "Private License",
-            "url": "URL to the license"
-        },
+        "description": "This API is for training",
         "version": "1.0.0"
     },
     "host": "laravel.local",
@@ -20,6 +12,42 @@
         "https"
     ],
     "paths": {
+        "/api/login": {
+            "post": {
+                "tags": [
+                    "auth"
+                ],
+                "summary": "Perform a login request to the API",
+                "operationId": "auth.login",
+                "parameters": [
+                    {
+                        "name": "email",
+                        "in": "formData",
+                        "description": "The email used during authentication process of a user",
+                        "required": true,
+                        "type": "string",
+                        "default": "user1groupe1@dev.com"
+                    },
+                    {
+                        "name": "password",
+                        "in": "formData",
+                        "description": "The password used during authentication process of a user",
+                        "required": true,
+                        "type": "string",
+                        "format": "password",
+                        "default": "123456"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Json Web Token"
+                    },
+                    "401": {
+                        "description": "Unauthorized exception"
+                    }
+                }
+            }
+        },
         "/api/posts": {
             "get": {
                 "tags": [
@@ -90,17 +118,5 @@
             }
         }
     },
-    "definitions": {},
-    "securityDefinitions": {
-        "passport": {
-            "type": "oauth2",
-            "flow": "password",
-            "tokenUrl": "/oauth/token",
-            "scopes": {}
-        }
-    },
-    "externalDocs": {
-        "description": "Find out more about my website",
-        "url": "http..."
-    }
+    "definitions": {}
 }

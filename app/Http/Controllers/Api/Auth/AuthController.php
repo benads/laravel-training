@@ -18,12 +18,36 @@ class AuthController extends Controller
     }
 
     /**
-     * @SWG\SecurityScheme(
-     *   securityDefinition="passport",
-     *   type="oauth2",
-     *   tokenUrl="/oauth/token",
-     *   flow="password",
-     *   scopes={}
+     * @SWG\Post(
+     *   path="/api/login",
+     *   summary="Perform a login request to the API",
+     *   operationId="auth.login",
+     *   tags={"auth"},
+     *   @SWG\Parameter(
+     *     name="email",
+     *     in="formData",
+     *     description="The email used during authentication process of a user",
+     *     type="string",
+     *     required=true,
+     *     default="user1groupe1@dev.com"
+     *   ),
+     *   @SWG\Parameter(
+     *     name="password",
+     *     in="formData",
+     *     description="The password used during authentication process of a user",
+     *     type="string",
+     *     format="password",
+     *     required=true,
+     *     default="123456",
+     *   ),
+     *   @SWG\Response(
+     *     response=200,
+     *     description="Json Web Token",
+     *   ),
+     *   @SWG\Response(
+     *     response=401,
+     *     description="Unauthorized exception",
+     *   ),
      * )
      */
     public function login()

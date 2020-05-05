@@ -15,20 +15,8 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
  *     @SWG\Info(
  *         version="1.0.0",
  *         title="Laravel-training docs",
- *         description="Api description...",
- *         termsOfService="",
- *         @SWG\Contact(
- *             email="contact@mysite.com"
- *         ),
- *         @SWG\License(
- *             name="Private License",
- *             url="URL to the license"
- *         )
- *     ),
- *     @SWG\ExternalDocumentation(
- *         description="Find out more about my website",
- *         url="http..."
- *     )
+ *         description="This API is for training",
+ *      )
  * )
  */
 class Controller extends BaseController
