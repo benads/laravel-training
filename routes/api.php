@@ -18,7 +18,7 @@ Route::group(['middleware' => 'api',], function () {
     Route::get('profile', 'Api\UserController@show');
     Route::post('post/{id}/like', 'Api\LikeController@like');
     Route::delete('post/{id}/unlike', 'Api\LikeController@unlike');
-    Route::get('post', 'Api\PostController@index');
+    Route::get('posts', 'Api\PostController@index');
     Route::get('post/{id}', 'Api\PostController@show');
     Route::post('post/{id}/comment', 'Api\CommentController@store');
     Route::get('friends', 'Api\FriendController@index');
