@@ -18,9 +18,13 @@ class AuthController extends Controller
     }
 
     /**
-     * Get a JWT via given credentials.
-     *
-     * @return \Illuminate\Http\JsonResponse
+     * @SWG\SecurityScheme(
+     *   securityDefinition="passport",
+     *   type="oauth2",
+     *   tokenUrl="/oauth/token",
+     *   flow="password",
+     *   scopes={}
+     * )
      */
     public function login()
     {

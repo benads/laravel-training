@@ -23,17 +23,63 @@
         "/api/posts": {
             "get": {
                 "tags": [
-                    "Projects"
+                    "posts"
                 ],
-                "summary": "Get list of projects",
-                "description": "Returns list of projects",
-                "operationId": "getProjectsList",
+                "summary": "Get list of posts",
+                "description": "Returns list of posts",
+                "operationId": "getpostsList",
                 "responses": {
                     "200": {
                         "description": "successful operation"
                     },
-                    "400": {
-                        "description": "Bad request"
+                    "401": {
+                        "description": "unauthenticated"
+                    }
+                },
+                "security": [
+                    {
+                        "api_key_security_example": []
+                    }
+                ]
+            }
+        },
+        "/api/post/create": {
+            "post": {
+                "tags": [
+                    "posts"
+                ],
+                "summary": "Create post",
+                "description": "Create post",
+                "operationId": "getpostsList",
+                "responses": {
+                    "201": {
+                        "description": "successful operation"
+                    },
+                    "401": {
+                        "description": "unauthenticated"
+                    }
+                },
+                "security": [
+                    {
+                        "api_key_security_example": []
+                    }
+                ]
+            }
+        },
+        "/api/posts/{id}": {
+            "get": {
+                "tags": [
+                    "posts"
+                ],
+                "summary": "Show post in detail",
+                "description": "Returns detail of post",
+                "operationId": "getpostsList",
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "401": {
+                        "description": "unauthenticated"
                     }
                 },
                 "security": [
@@ -45,6 +91,14 @@
         }
     },
     "definitions": {},
+    "securityDefinitions": {
+        "passport": {
+            "type": "oauth2",
+            "flow": "password",
+            "tokenUrl": "/oauth/token",
+            "scopes": {}
+        }
+    },
     "externalDocs": {
         "description": "Find out more about my website",
         "url": "http..."

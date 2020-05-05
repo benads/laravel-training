@@ -30,21 +30,21 @@ class PostController extends Controller
     /**
      * @SWG\Get(
      *      path="/api/posts",
-     *      operationId="getProjectsList",
-     *      tags={"Projects"},
-     *      summary="Get list of projects",
-     *      description="Returns list of projects",
+     *      operationId="getpostsList",
+     *      tags={"posts"},
+     *      summary="Get list of posts",
+     *      description="Returns list of posts",
      *      @SWG\Response(
      *          response=200,
      *          description="successful operation"
      *       ),
-     *       @SWG\Response(response=400, description="Bad request"),
+     *       @SWG\Response(response=401, description="unauthenticated"),
      *       security={
      *           {"api_key_security_example": {}}
      *       }
      *     )
      *
-     * Returns list of projects
+     * Returns list of posts
      */
     public function index()
     {
@@ -64,10 +64,23 @@ class PostController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * @SWG\Post(
+     *      path="/api/post/create",
+     *      operationId="getpostsList",
+     *      tags={"posts"},
+     *      summary="Create post",
+     *      description="Create post",
+     *      @SWG\Response(
+     *          response=201,
+     *          description="successful operation"
+     *       ),
+     *       @SWG\Response(response=401, description="unauthenticated"),
+     *       security={
+     *           {"api_key_security_example": {}}
+     *       }
+     *     )
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * Returns list of posts
      */
     public function store(Request $request)
     {
@@ -85,10 +98,23 @@ class PostController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * @SWG\Get(
+     *      path="/api/posts/{id}",
+     *      operationId="getpostsList",
+     *      tags={"posts"},
+     *      summary="Show post in detail",
+     *      description="Returns detail of post",
+     *      @SWG\Response(
+     *          response=200,
+     *          description="successful operation"
+     *       ),
+     *       @SWG\Response(response=401, description="unauthenticated"),
+     *       security={
+     *           {"api_key_security_example": {}}
+     *       }
+     *     )
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * Returns list of posts
      */
     public function show($id)
     {
