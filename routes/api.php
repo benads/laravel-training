@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 */
 
 Route::post('login', 'Api\Auth\AuthController@login');
+Route::post('register', 'Api\Auth\RegisterController@register');
 
 Route::group(['middleware' => 'jwt.auth',], function () {
     Route::post('logout', 'Api\Auth\AuthController@logout');
