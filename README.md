@@ -4,7 +4,7 @@ Add the following Cron entry to your server :
 <br>
 `* * * * * php /path-to-your-project/artisan schedule:run >> /dev/null 2>&1`
 
-This app is running with Homestead & Docker (not mandatory) under Nginx
+This app is running with Homestead & Docker (both are not mandatory) under Nginx
 
 ### With Docker 🐳 :
 
@@ -24,6 +24,14 @@ Run specfic command into container ;
 <br>
 `docker-compose exec`
 
+Migrate your db ;
+<br>
+`docker container exec app php artisan migrate`
+
+Seed your db ;
+<br>
+`docker container exec app php db:seed`
+
 ---
 
 ### Without Docker
@@ -31,6 +39,14 @@ Run specfic command into container ;
 Install dependancies for PHP
 <br>
 `composer install`
+
+Migrate your db ;
+<br>
+`php artisan migrate`
+
+Seed your db ;
+<br>
+`php artisan db:seed`
 
 Install modules javascript
 <br>
