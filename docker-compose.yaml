@@ -28,6 +28,8 @@ services:
       - redis
     volumes:
       - ./docker/laravel-echo/laravel-echo-server.json:/app/laravel-echo-server.json:ro
+    networks:
+      - app-network
 
   redis:
     build: ./docker/redis
