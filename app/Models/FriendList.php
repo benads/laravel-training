@@ -12,6 +12,8 @@ class FriendList extends Model
      * @var string
      */
     protected $table = 'friend_lists';
+
+    protected $guarded = [];
     
     public function allFriends()
     {
