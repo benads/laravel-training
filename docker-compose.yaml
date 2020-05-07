@@ -75,6 +75,14 @@ services:
     networks:
       - app-network
 
+  adminer:
+    image: adminer
+    restart: always
+    networks:
+      - app-network
+    ports:
+      - 8080:8080
+
 #Docker Networks
 networks:
   app-network:
