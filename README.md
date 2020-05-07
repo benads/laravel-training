@@ -1,5 +1,7 @@
 ## Laravel trainings
 
+[![<ORG_NAME>](https://circleci.com/gh/benads/laravel-training.svg?style=svg)](LINK)
+
 Add the following Cron entry to your server :
 <br>
 `* * * * * php /path-to-your-project/artisan schedule:run >> /dev/null 2>&1`
