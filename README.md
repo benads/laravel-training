@@ -1,6 +1,6 @@
 ## Laravel trainings
 
-[![<ORG_NAME>](https://circleci.com/gh/benads/laravel-training.svg?style=svg)]
+[<ORG_NAME>](https://circleci.com/gh/benads/laravel-training.svg?style=svg)
 
 Add the following Cron entry to your server :
 <br>
