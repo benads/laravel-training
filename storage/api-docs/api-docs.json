@@ -1,122 +1,18 @@
 {
-    "swagger": "2.0",
+    "openapi": "3.0.0",
     "info": {
-        "title": "Laravel-training docs",
-        "description": "This API is for training",
-        "version": "1.0.0"
+        "title": "Laravel-training API",
+        "version": "0.1"
     },
-    "host": "laravel.local",
-    "basePath": "/",
-    "schemes": [
-        "http",
-        "https"
-    ],
     "paths": {
-        "/api/login": {
-            "post": {
-                "tags": [
-                    "auth"
-                ],
-                "summary": "Perform a login request to the API",
-                "operationId": "auth.login",
-                "parameters": [
-                    {
-                        "name": "email",
-                        "in": "formData",
-                        "description": "The email used during authentication process of a user",
-                        "required": true,
-                        "type": "string",
-                        "default": "user1groupe1@dev.com"
-                    },
-                    {
-                        "name": "password",
-                        "in": "formData",
-                        "description": "The password used during authentication process of a user",
-                        "required": true,
-                        "type": "string",
-                        "format": "password",
-                        "default": "123456"
-                    }
-                ],
+        "/api/resource.json": {
+            "get": {
                 "responses": {
                     "200": {
-                        "description": "Json Web Token"
-                    },
-                    "401": {
-                        "description": "Unauthorized exception"
+                        "description": "An example resource"
                     }
                 }
             }
-        },
-        "/api/posts": {
-            "get": {
-                "tags": [
-                    "posts"
-                ],
-                "summary": "Get list of posts",
-                "description": "Returns list of posts",
-                "operationId": "getpostsList",
-                "responses": {
-                    "200": {
-                        "description": "successful operation"
-                    },
-                    "401": {
-                        "description": "unauthenticated"
-                    }
-                },
-                "security": [
-                    {
-                        "api_key_security_example": []
-                    }
-                ]
-            }
-        },
-        "/api/post/create": {
-            "post": {
-                "tags": [
-                    "posts"
-                ],
-                "summary": "Create post",
-                "description": "Create post",
-                "operationId": "getpostsList",
-                "responses": {
-                    "201": {
-                        "description": "successful operation"
-                    },
-                    "401": {
-                        "description": "unauthenticated"
-                    }
-                },
-                "security": [
-                    {
-                        "api_key_security_example": []
-                    }
-                ]
-            }
-        },
-        "/api/posts/{id}": {
-            "get": {
-                "tags": [
-                    "posts"
-                ],
-                "summary": "Show post in detail",
-                "description": "Returns detail of post",
-                "operationId": "getpostsList",
-                "responses": {
-                    "200": {
-                        "description": "successful operation"
-                    },
-                    "401": {
-                        "description": "unauthenticated"
-                    }
-                },
-                "security": [
-                    {
-                        "api_key_security_example": []
-                    }
-                ]
-            }
         }
-    },
-    "definitions": {}
+    }
 }

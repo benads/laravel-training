@@ -8,15 +8,13 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 /**
- * @SWG\Swagger(
- *     schemes={"http","https"},
- *     host="laravel.local",
- *     basePath="/",
- *     @SWG\Info(
- *         version="1.0.0",
- *         title="Laravel-training docs",
- *         description="This API is for training",
- *      )
+ * @OA\Info(title="My First API", version="0.1")
+ */
+
+/**
+ * @OA\Get(
+ *     path="/api/resource.json",
+ *     @OA\Response(response="200", description="An example resource")
  * )
  */
 class Controller extends BaseController
