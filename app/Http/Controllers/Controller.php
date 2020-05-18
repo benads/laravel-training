@@ -8,7 +8,7 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 /**
- * @OA\Info(title="My First API", version="0.1")
+ * @OA\Info(title="Laravel training API", version="0.1")
  */
 
 /**
