@@ -10,8 +10,6 @@ This app is running with Homestead & Docker (both are not mandatory) under Nginx
 
 ### With Docker 🐳 :
 
-WIP : redis & laravel-echo doesn't working togeher
-
 You need to install docker on your machine first
 
 Build and run your containers in background with `-d` :
