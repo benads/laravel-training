@@ -4,16 +4,6 @@
 #
 version: 2
 jobs:
-  build-and-deploy:
-    jobs:
-      - build
-      - deploy-prod:
-          filters:
-            branches:
-              only:
-                - master
-          requires:
-            - build
   build:
     docker:
       # Specify the version you desire here
@@ -57,16 +47,8 @@ jobs:
           key: node-v1-{{ checksum "package.json" }}
           paths:
             - node_modules
-
       # prepare the database
       # - run: touch storage/testing.sqlite
       # - run: php artisan migrate --env=testing --database=sqlite_testing --force
       # run tests with phpunit or codecept
       # - run: phpunit
-  deploy-prod:
-    docker:
-      # specify the version you desire here (you might not want node)
-      - image: circleci/node:7.10
-    steps:
-      - checkout
-      - run: ssh -oStrictHostKeyChecking=no -v $DROPLET_USER@$DROPLET_IP “./deploy_project.sh”
