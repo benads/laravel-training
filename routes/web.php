@@ -15,6 +15,4 @@ use App\Http\Controllers\Auth\LoginController;
 |
 */
 
-Route::get('/', function () {
-    return redirect('api/documentation');
-});
+
