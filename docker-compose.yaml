@@ -20,6 +20,7 @@ services:
       - app-network
 
   laravel-echo-server:
+    container_name: laravel-echo-server
     build:
       context: ./docker/laravel-echo
     ports:
@@ -76,6 +77,7 @@ services:
       - app-network
 
   adminer:
+    container_name: adminer
     image: adminer
     restart: always
     networks:
