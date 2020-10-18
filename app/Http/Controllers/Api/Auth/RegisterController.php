@@ -11,13 +11,14 @@ class RegisterController extends Controller
 {
     public function register(Request $request)
     {
-        $user = User::create([
-            'email' => $request->email,
-            'password' =>  Hash::make($request->password),
-            'group_id' => "2",
-            'name' => $request->name,
-        ]);
+        return 'ok';
+        // $user = User::create([
+        //     'email' => $request->email,
+        //     'password' =>  Hash::make($request->password),
+        //     'group_id' => "2",
+        //     'name' => $request->name,
+        // ]);
 
-        return response($user, 201);
+        // return response($user, 201);
     }
 }

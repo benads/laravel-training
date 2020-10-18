@@ -3,10 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Group;
-use Illuminate\Http\Request;
 use App\Events\GroupWizzEvent;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Redis;
 
 class GroupController extends Controller
 {
