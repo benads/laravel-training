@@ -48,19 +48,28 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::paginate();
+        $user = Auth::user();
 
-        $formattedPosts = [
-                           "current_page" => $posts->currentPage(),
-                           "total_posts" => $posts->total(),
-                           "next_page_url" => $posts->nextPageUrl()
-                          ];
+        $friends = $user->list->friends;
 
-        foreach ($posts as $post) {
-            $formattedPosts[] = $this->postArray($post);
-        }
+        $friend_id = [$user->id];
+        
+        $friend_id = $friends->pluck('id');
 
-        return response($formattedPosts, 200);
+        $friend_id[] = $user->id;
+
+        $posts = Post::whereIn('user_id', $friend_id)->orderBy('created_at', 'DESC')->get();
+
+        return response($posts, 200);
+    }
+
+    public function myPosts()
+    {
+        $user = Auth::user();
+        
+        $posts = $user->posts;
+
+        return response($posts, 200);
     }
 
     /**
@@ -88,7 +97,7 @@ class PostController extends Controller
 
         $post = Post::create([
                     'content' => $request->content,
-                    'title' => $request->title ,
+                    'title' => $request->title,
                     'user_id' => $user_id
                 ]);
         
