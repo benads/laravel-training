@@ -37,4 +37,47 @@ class ExampleTest extends TestCase
 
         $response->assertStatus(200);
     }
+
+    /**
+     * @test
+     */
+    public function user_can_create_a_post()
+    {
+        $user = User::first();
+
+        $token = \Tymon\JWTAuth\Facades\JWTAuth::fromUser($user); 
+
+        $data = [
+            'title' => 'Im a fake title',
+            'content' => 'Im a fake content',
+            'user_id' => $user->id
+        ];
+
+
+        $response = $this->post('api/post/create?token=' . $token, $data);
+
+        $response->assertStatus(201);
+    }
+
+    /**
+     * @test
+     */
+    public function user_not_connected_cant_create_a_post()
+    {
+        $user = User::first();
+
+        $data = [
+            'title' => 'Im a fake title',
+            'content' => 'Im a fake content',
+            'user_id' => $user->id
+        ];
+
+        $response = $this->post('api/post/create', $data);
+
+        $response->assertStatus(401);
+
+        $response->assertJson([
+            'error' => 'unauthenticated',
+        ]);
+    }
 }
