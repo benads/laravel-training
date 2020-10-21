@@ -8,6 +8,13 @@ use Illuminate\Support\Facades\Auth;
 class Post extends Model
 {
     protected $guarded = [];
+
+    /**
+     * The accessors to append to the model's array form.
+     *
+     * @var array
+     */
+    protected $appends = ['author'];
     
     public function user()
     {
@@ -48,5 +55,15 @@ class Post extends Model
             ['post_id', $postId],
             ['like', true]
         ])->count();
+    }
+
+    /**
+     * Get the author of the post.
+     *
+     * @return bool
+     */
+    public function getAuthorAttribute()
+    {
+        return $this->user->name;
     }
 }
