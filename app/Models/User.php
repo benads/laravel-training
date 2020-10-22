@@ -50,6 +50,11 @@ class User extends Authenticatable implements JWTSubject
     //     return $this->belongsToMany(Friend::class, 'user_friends');
     // }
 
+    public function scopeWhereLike($query, $column, $value)
+    {
+        return $query->where($column, 'like', '%'.$value.'%');
+    }
+
 
     /**
      * --------------------------------

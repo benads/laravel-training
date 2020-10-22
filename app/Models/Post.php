@@ -14,7 +14,7 @@ class Post extends Model
      *
      * @var array
      */
-    protected $appends = ['author'];
+    protected $appends = ['author', 'liked', 'count_like'];
     
     public function user()
     {
@@ -65,5 +65,25 @@ class Post extends Model
     public function getAuthorAttribute()
     {
         return $this->user->name;
+    }
+
+    /**
+     * Get the author of the post.
+     *
+     * @return bool
+     */
+    public function getCountLikeAttribute()
+    {
+        return count($this->likes);
+    }
+
+    /**
+     * Get the author of the post.
+     *
+     * @return bool
+     */
+    public function getLikedAttribute()
+    {
+        return $this->userLiked($this->id);
     }
 }
