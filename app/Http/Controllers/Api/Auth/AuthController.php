@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api\Auth;
 
+use App\Events\UserIsConnected;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 
@@ -58,6 +59,8 @@ class AuthController extends Controller
             return response()->json(['error' => 'Unauthorized'], 401);
         }
 
+        event(new UserIsConnected(Auth::user()));
+
         return $this->respondWithToken($token);
     }
 
@@ -68,7 +71,9 @@ class AuthController extends Controller
      */
     public function me()
     {
-        return response()->json(auth()->user());
+        $user = Auth::user();
+        
+        return response()->json($user);
     }
 
     /**
@@ -78,6 +83,10 @@ class AuthController extends Controller
      */
     public function logout()
     {
+        $user = Auth::user();
+
+        $user->update(['isConnected' => false]);
+
         auth()->logout();
 
         return response()->json(['message' => 'Successfully logged out']);

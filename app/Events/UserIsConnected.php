@@ -11,22 +11,20 @@ use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 
-class UserSignedUp implements ShouldBroadcast
+class UserIsConnected implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
-    public $username;
-
-    public $age = 30;
+    public $user;
 
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct($username)
+    public function __construct($user)
     {
-        $this->username = $username;
+        $this->user = $user;
     }
 
     /**
@@ -36,6 +34,6 @@ class UserSignedUp implements ShouldBroadcast
      */
     public function broadcastOn()
     {
-        return new Channel('test-channel');
+        return new Channel('connection-channel.' . $this->user->id);
     }
 }
