@@ -64,6 +64,8 @@ class ExampleTest extends TestCase
      */
     public function user_not_connected_cant_create_a_post()
     {
+        
+
         $user = User::first();
 
         $data = [
